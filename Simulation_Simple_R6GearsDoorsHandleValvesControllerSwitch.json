@@ -1,0 +1,456 @@
+{
+    "activations": [
+        {
+            "id": "$initialise_machine",
+            "execute": "$initialise_machine",
+            "activating": "cycle"
+        },
+		{"id": "cycle",
+		 "chooseActivation": {"begin_flying": "IF shock_absorber = ground THEN 1.0 ELSE 0.0 END",
+							  "land_plane": "IF shock_absorber = flight THEN 1.0 ELSE 0.0 END"}
+		},
+		{
+			"id": "begin_flying",
+			"execute": "begin_flying",
+			"after": "1000",
+			"activating": "toggle"
+		},
+		{
+			"id": "land_plane",
+			"execute": "land_plane",
+			"after": "1000",
+			"activating": "toggle"
+		},
+		{"id": "toggle",
+		 "chooseActivation": {"toggle_handle_up": "IF handle = down THEN 1.0 ELSE 0.0 END",
+							  "toggle_handle_down": "IF handle = up THEN 1.0 ELSE 0.0 END"}
+		},
+		{
+			"id": "toggle_handle_up",
+			"execute": "toggle_handle_up",
+			"activating": "close_switch",
+			"after": "3000"
+		},
+		{
+			"id": "toggle_handle_down",
+			"execute": "toggle_handle_down",
+			"activating": "close_switch",
+			"after": "3000"
+		},
+		{
+			"id": "close_switch",
+			"execute": "env_close_analogical_switch",
+			"activating": "stimulate_gv",
+			"after": "100"
+		},
+		{
+			"id": "stimulate_gv",
+			"execute": "con_stimulate_general_valve",
+			"activating": ["stimulate_open_door", "env_open_general_valve"],
+			"after": "100"
+		},
+		{
+			"id": "stimulate_open_door",
+			"execute": "con_stimulate_open_door_valve",
+			"activating": ["open_valve_door_open", "env_open_general_valve"],
+			"after": "100"
+		},
+		{
+			"id": "open_valve_door_open",
+			"execute": "open_valve_door_open",
+			"after": "1000"
+		},
+		{
+			"id": "env_open_general_valve",
+			"execute": "evn_open_general_valve",
+			"activating": ["start_open_left_door", "start_open_right_door", "start_open_front_door"],
+			"after": "1000"
+		},
+		
+		{
+			"id": "start_open_left_door",
+			"execute": "env_start_open_door",
+			"fixedVariables": {"gr" : "left"},
+			"activating": ["open_left_door", "open_left_door_last"],
+			"after": "5000"
+		},
+		{
+			"id": "open_left_door",
+			"execute": "env_open_door_skip",
+			"fixedVariables": {"gr" : "left"},
+			"activating": ["con_stimulate_retract_gear_valve", "con_stimulate_extend_gear_valve"],
+			"after": "500"
+		},
+		{
+			"id": "open_left_door_last",
+			"execute": "env_open_door_last",
+			"fixedVariables": {"gr" : "left"},
+			"activating": ["con_stimulate_retract_gear_valve", "con_stimulate_extend_gear_valve"],
+			"after": "500"
+		},
+		
+		{
+			"id": "start_open_right_door",
+			"execute": "env_start_open_door",
+			"fixedVariables": {"gr" : "right"},
+			"activating": ["open_right_door", "open_right_door_last"],
+			"after": "5000"
+		},
+		{
+			"id": "open_right_door",
+			"execute": "env_open_door_skip",
+			"fixedVariables": {"gr" : "right"},
+			"activating": ["con_stimulate_retract_gear_valve", "con_stimulate_extend_gear_valve"],
+			"after": "500"
+		},
+		{
+			"id": "open_right_door_last",
+			"execute": "env_open_door_last",
+			"fixedVariables": {"gr" : "right"},
+			"activating": ["con_stimulate_retract_gear_valve", "con_stimulate_extend_gear_valve"],
+			"after": "500"
+		},
+		
+		{
+			"id": "start_open_front_door",
+			"execute": "env_start_open_door",
+			"fixedVariables": {"gr" : "front"},
+			"activating": ["open_front_door", "open_front_door_last"],
+			"after": "5000"
+		},
+		{
+			"id": "open_front_door",
+			"execute": "env_open_door_skip",
+			"fixedVariables": {"gr" : "front"},
+			"activating": ["con_stimulate_retract_gear_valve", "con_stimulate_extend_gear_valve"],
+			"after": "500"
+		},
+		{
+			"id": "open_front_door_last",
+			"execute": "env_open_door_last",
+			"fixedVariables": {"gr" : "front"},
+			"activating": ["con_stimulate_retract_gear_valve", "con_stimulate_extend_gear_valve"],
+			"after": "500"
+		},
+		
+		{
+			"id": "con_stimulate_retract_gear_valve",
+			"execute": "con_stimulate_retract_gear_valve",
+			"activating": "open_valve_retract_gear",
+			"after": "100"
+		},
+		
+		{
+			"id": "con_stimulate_extend_gear_valve",
+			"execute": "con_stimulate_extend_gear_valve",
+			"activating": "open_valve_extend_gear",
+			"after": "100"
+		},
+		
+		{
+			"id": "open_valve_retract_gear",
+			"execute": "open_valve_retract_gear",
+			"activating": ["env_start_retracting_left", "env_start_retracting_right", "env_start_retracting_front"],
+			"after": "1000"
+		},
+		
+		{
+			"id": "open_valve_extend_gear",
+			"execute": "open_valve_extend_gear",
+			"activating": ["env_start_extending_left", "env_start_extending_right", "env_start_extending_front"],
+			"after": "1000"
+		},
+		
+		
+		{
+			"id": "env_start_retracting_left",
+			"execute": "env_start_retracting_first",
+			"fixedVariables": {"gr" : "left"},
+			"activating": ["retract_left_gear", "retract_left_gear_last"],
+			"after": "5000"
+		},
+		{
+			"id": "retract_left_gear",
+			"execute": "env_retract_gear_skip",
+			"fixedVariables": {"gr" : "left"},
+			"activating": "con_stop_stimulate_retract_gear_valve",
+			"after": "500"
+		},
+		{
+			"id": "retract_left_gear_last",
+			"execute": "env_retract_gear_last",
+			"fixedVariables": {"gr" : "left"},
+			"activating": "con_stop_stimulate_retract_gear_valve",
+			"after": "500"
+		},
+		
+		
+		{
+			"id": "env_start_retracting_right",
+			"execute": "env_start_retracting_first",
+			"fixedVariables": {"gr" : "right"},
+			"activating": ["retract_right_gear", "retract_right_gear_last"],
+			"after": "5000"
+		},
+		{
+			"id": "retract_right_gear",
+			"execute": "env_retract_gear_skip",
+			"fixedVariables": {"gr" : "right"},
+			"activating": "con_stop_stimulate_retract_gear_valve",
+			"after": "500"
+		},
+		{
+			"id": "retract_right_gear_last",
+			"execute": "env_retract_gear_last",
+			"fixedVariables": {"gr" : "right"},
+			"activating": "con_stop_stimulate_retract_gear_valve",
+			"after": "500"
+		},
+		
+		
+		{
+			"id": "env_start_retracting_front",
+			"execute": "env_start_retracting_first",
+			"fixedVariables": {"gr" : "front"},
+			"activating": ["retract_front_gear", "retract_front_gear_last"],
+			"after": "5000"
+		},
+		{
+			"id": "retract_front_gear",
+			"execute": "env_retract_gear_skip",
+			"fixedVariables": {"gr" : "front"},
+			"activating": "con_stop_stimulate_retract_gear_valve",
+			"after": "500"
+		},
+		{
+			"id": "retract_front_gear_last",
+			"execute": "env_retract_gear_last",
+			"fixedVariables": {"gr" : "front"},
+			"activating": "con_stop_stimulate_retract_gear_valve",
+			"after": "500"
+		},
+		
+
+		
+		{
+			"id": "env_start_extending_left",
+			"execute": "env_start_extending",
+			"fixedVariables": {"gr" : "left"},
+			"activating": ["extend_left_gear", "extend_left_gear_last"],
+			"after": "5000"
+		},
+		{
+			"id": "extend_left_gear",
+			"execute": "env_extend_gear_skip",
+			"fixedVariables": {"gr" : "left"},
+			"activating": "con_stop_stimulate_extend_gear_valve",
+			"after": "500"
+		},
+		{
+			"id": "extend_left_gear_last",
+			"execute": "env_extend_gear_last",
+			"fixedVariables": {"gr" : "left"},
+			"activating": "con_stop_stimulate_extend_gear_valve",
+			"after": "500"
+		},
+		
+		
+		{
+			"id": "env_start_extending_right",
+			"execute": "env_start_extending",
+			"fixedVariables": {"gr" : "right"},
+			"activating": ["extend_right_gear", "extend_right_gear_last"],
+			"after": "5000"
+		},
+		{
+			"id": "extend_right_gear",
+			"execute": "env_extend_gear_skip",
+			"fixedVariables": {"gr" : "right"},
+			"activating": "con_stop_stimulate_extend_gear_valve",
+			"after": "500"
+		},
+		{
+			"id": "extend_right_gear_last",
+			"execute": "env_extend_gear_last",
+			"fixedVariables": {"gr" : "right"},
+			"activating": "con_stop_stimulate_extend_gear_valve",
+			"after": "500"
+		},
+		
+		
+		{
+			"id": "env_start_extending_front",
+			"execute": "env_start_extending",
+			"fixedVariables": {"gr" : "front"},
+			"activating": ["extend_front_gear", "extend_front_gear_last"],
+			"after": "5000"
+		},
+		{
+			"id": "extend_front_gear",
+			"execute": "env_extend_gear_skip",
+			"fixedVariables": {"gr" : "front"},
+			"activating": "con_stop_stimulate_extend_gear_valve",
+			"after": "500"
+		},
+		{
+			"id": "extend_front_gear_last",
+			"execute": "env_extend_gear_last",
+			"fixedVariables": {"gr" : "front"},
+			"activating": "con_stop_stimulate_extend_gear_valve",
+			"after": "500"
+		},
+		
+		
+		{
+			"id": "con_stop_stimulate_retract_gear_valve",
+			"execute": "con_stop_stimulate_retract_gear_valve",
+			"activating": ["con_stop_stimulate_open_door_valve", "close_valve_retract_gear"],
+			"after": "100"
+		},
+		
+		{
+			"id": "con_stop_stimulate_extend_gear_valve",
+			"execute": "con_stop_stimulate_extend_gear_valve",
+			"activating": ["con_stop_stimulate_open_door_valve", "close_valve_extend_gear"],
+			"after": "100"
+		},
+		
+		{
+			"id": "con_stop_stimulate_open_door_valve",
+			"execute": "con_stop_stimulate_open_door_valve",
+			"activating": ["con_stimulate_close_door_valve", "close_valve_door_open"],
+			"after": "100"
+		},
+		
+		{
+			"id": "close_valve_retract_gear",
+			"execute": "close_valve_retract_gear",
+			"after": "1000"
+		},
+		
+		{
+			"id": "close_valve_extend_gear",
+			"execute": "close_valve_extend_gear",
+			"after": "1000"
+		},
+		
+		{
+			"id": "close_valve_door_open",
+			"execute": "close_valve_door_open",
+			"after": "1000"
+		},
+		
+		{
+			"id": "con_stimulate_close_door_valve",
+			"execute": "con_stimulate_close_door_valve",
+			"activating": "open_valve_door_close",
+			"after": "100"
+		},
+		{
+			"id": "open_valve_door_close",
+			"execute": "open_valve_door_close",
+			"activating": ["start_close_door_left", "start_close_door_right", "start_close_door_front"],
+			"after": "1000"
+		},
+		
+		{
+			"id": "start_close_door_left",
+			"execute": "env_start_close_door",
+			"fixedVariables": {"gr" : "left"},
+			"activating": ["close_left_door", "close_left_door_last"],
+			"after": "5000"
+		},
+		{
+			"id": "close_left_door",
+			"execute": "env_close_door_skip",
+			"fixedVariables": {"gr" : "left"},
+			"activating": "con_stop_stimulate_close_door_valve",
+			"after": "500"
+		},
+		{
+			"id": "close_left_door_last",
+			"execute": "env_close_door",
+			"fixedVariables": {"gr" : "left"},
+			"activating": "con_stop_stimulate_close_door_valve",
+			"after": "500"
+		},
+		
+		{
+			"id": "start_close_door_right",
+			"execute": "env_start_close_door",
+			"fixedVariables": {"gr" : "right"},
+			"activating": ["close_right_door", "close_right_door_last"],
+			"after": "5000"
+		},
+		{
+			"id": "close_right_door",
+			"execute": "env_close_door_skip",
+			"fixedVariables": {"gr" : "right"},
+			"activating": "con_stop_stimulate_close_door_valve",
+			"after": "500"
+		},
+		{
+			"id": "close_right_door_last",
+			"execute": "env_close_door",
+			"fixedVariables": {"gr" : "right"},
+			"activating": "con_stop_stimulate_close_door_valve",
+			"after": "500"
+		},
+		
+		{
+			"id": "start_close_door_front",
+			"execute": "env_start_close_door",
+			"fixedVariables": {"gr" : "front"},
+			"activating": ["close_front_door", "close_front_door_last"],
+			"after": "5000"
+		},
+		{
+			"id": "close_front_door",
+			"execute": "env_close_door_skip",
+			"fixedVariables": {"gr" : "front"},
+			"activating": "con_stop_stimulate_close_door_valve",
+			"after": "500"
+		},
+		{
+			"id": "close_front_door",
+			"execute": "env_close_door",
+			"fixedVariables": {"gr" : "front"},
+			"activating": "con_stop_stimulate_close_door_valve",
+			"after": "500"
+		},
+		
+		{
+			"id": "con_stop_stimulate_close_door_valve",
+			"execute": "con_stop_stimulate_close_door_valve",
+			"activating": ["close_valve_door_close", "con_stop_stimulate_general_valve"],
+			"after": "5000"
+		},
+		
+		{
+			"id": "close_valve_door_close",
+			"execute": "close_valve_door_close",
+			"after": "1000"
+		},
+		
+		{
+			"id": "con_stop_stimulate_general_valve",
+			"execute": "con_stop_stimulate_general_valve",
+			"activating": "env_close_general_valve",
+			"after": "100"
+		},
+		
+		{
+			"id": "env_close_general_valve",
+			"execute": "evn_close_general_valve",
+			"activating": "env_open_analogical_switch",
+			"after": "1000"
+		},
+		
+		{
+			"id": "env_open_analogical_switch",
+			"execute": "env_open_analogical_switch",
+			"activating": "cycle",
+			"after": "100"
+		}
+    ]
+}

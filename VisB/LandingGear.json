@@ -1,0 +1,27 @@
+{
+  "svg":"architecture.svg",
+  "items":[
+	  {
+	  "id":"door_cylinder_forcer",
+	  "attr":"transform",
+	  "value":"{closed |-> \"translate(0,0)\", open |-> \"translate(90,0)\", door_moving |-> \"translate(45,0)\"}(door)"
+	  },
+	  {
+	  "id":"gear_cylinder_forcer",
+	  "attr":"transform",
+	  "value":"{extended |-> \"translate(0,0)\", retracted |-> \"translate(90,0)\", gear_moving |-> \"translate(45,0)\"}(gear)"
+	  },
+	  {
+	  "repeat": ["front","left", "right"],
+	  "id":"%0_door_cylinder_forcer",
+	  "attr":"transform",
+	  "value":"{closed |-> \"translate(0,0)\", open |-> \"translate(90,0)\", door_moving |-> \"translate(45,0)\"}(doors(`%0`))"
+	  },
+	  {
+	  "repeat": ["front","left", "right"],
+	  "id":"%0_gear_cylinder_forcer",
+	  "attr":"transform",
+	  "value":"{extended |-> \"translate(0,0)\", retracted |-> \"translate(90,0)\", gear_moving |-> \"translate(45,0)\"}(gears(`%0`))"
+	  }
+  ]
+}

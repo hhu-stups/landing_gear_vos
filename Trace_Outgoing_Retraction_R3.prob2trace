@@ -1,0 +1,1077 @@
+{
+  "description": "",
+  "transitionList": [
+    {
+      "name": "$initialise_machine",
+      "params": {},
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦closed),(`left`↦closed),(`right`↦closed)}",
+        "door": "closed",
+        "handle": "down",
+        "gears": "{(`front`↦extended),(`left`↦extended),(`right`↦extended)}",
+        "gear": "extended"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "toggle_handle_up",
+      "params": {},
+      "results": {},
+      "destState": {
+        "handle": "up"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦closed),(`right`↦closed)}",
+        "door": "door_moving"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦closed)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door_skip",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦open),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door_skip",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦open),(`left`↦open),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door_last",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦open),(`left`↦open),(`right`↦open)}",
+        "door": "open"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_retracting_first",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦gear_moving),(`left`↦extended),(`right`↦extended)}",
+        "gear": "gear_moving"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_retracting_first",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦gear_moving),(`left`↦gear_moving),(`right`↦extended)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_retracting_first",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦gear_moving),(`left`↦gear_moving),(`right`↦gear_moving)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_retract_gear_skip",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦retracted),(`left`↦gear_moving),(`right`↦gear_moving)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_retract_gear_skip",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦retracted),(`left`↦retracted),(`right`↦gear_moving)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_retract_gear_last",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦retracted),(`left`↦retracted),(`right`↦retracted)}",
+        "gear": "retracted"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦open),(`right`↦open)}",
+        "door": "door_moving"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦open)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door_skip",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦closed),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door_skip",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦closed),(`left`↦closed),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦closed),(`left`↦closed),(`right`↦closed)}",
+        "door": "closed"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "toggle_handle_down",
+      "params": {},
+      "results": {},
+      "destState": {
+        "handle": "down"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦closed),(`right`↦closed)}",
+        "door": "door_moving"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦closed)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door_skip",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦open),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door_skip",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦open),(`left`↦open),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door_last",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦open),(`left`↦open),(`right`↦open)}",
+        "door": "open"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_extending",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦gear_moving),(`left`↦retracted),(`right`↦retracted)}",
+        "gear": "gear_moving"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_extending",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦gear_moving),(`left`↦gear_moving),(`right`↦retracted)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_extending",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦gear_moving),(`left`↦gear_moving),(`right`↦gear_moving)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_extend_gear_skip",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦extended),(`left`↦gear_moving),(`right`↦gear_moving)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_extend_gear_skip",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦extended),(`left`↦extended),(`right`↦gear_moving)}"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_extend_gear_last",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "gears": "{(`front`↦extended),(`left`↦extended),(`right`↦extended)}",
+        "gear": "extended"
+      },
+      "destStateNotChanged": [
+        "doors",
+        "door",
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦open),(`right`↦open)}",
+        "door": "door_moving"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦open)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦door_moving),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door_skip",
+      "params": {
+        "gr": "`front`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦closed),(`left`↦door_moving),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door_skip",
+      "params": {
+        "gr": "`left`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦closed),(`left`↦closed),(`right`↦door_moving)}"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door",
+      "params": {
+        "gr": "`right`"
+      },
+      "results": {},
+      "destState": {
+        "doors": "{(`front`↦closed),(`left`↦closed),(`right`↦closed)}",
+        "door": "closed"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gears",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    }
+  ],
+  "variableNames": [
+    "door",
+    "doors",
+    "gear",
+    "gears",
+    "handle"
+  ],
+  "constantNames": [],
+  "setNames": [
+    "DOOR_STATE",
+    "GEAR_STATE",
+    "HANDLE_STATE",
+    "POSITION"
+  ],
+  "machineOperationInfos": {
+    "env_retract_gear_skip": {
+      "operationName": "env_retract_gear_skip",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "doors",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "gears"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_close_door": {
+      "operationName": "env_close_door",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "door",
+        "doors"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_start_close_door": {
+      "operationName": "env_start_close_door",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "door",
+        "doors"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_start_extending": {
+      "operationName": "env_start_extending",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "gear",
+        "gears"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "toggle_handle_up": {
+      "operationName": "toggle_handle_up",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "handle"
+      ],
+      "writtenVariables": [
+        "handle"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "toggle_handle_down": {
+      "operationName": "toggle_handle_down",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "handle"
+      ],
+      "writtenVariables": [
+        "handle"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_retract_gear_last": {
+      "operationName": "env_retract_gear_last",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "gear",
+        "gears"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_open_door_last": {
+      "operationName": "env_open_door_last",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "door",
+        "doors"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_extend_gear_skip": {
+      "operationName": "env_extend_gear_skip",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "doors",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "gears"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_close_door_skip": {
+      "operationName": "env_close_door_skip",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "doors",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "doors"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_open_door_skip": {
+      "operationName": "env_open_door_skip",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "doors",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "doors"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_extend_gear_last": {
+      "operationName": "env_extend_gear_last",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "gear",
+        "gears"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_start_open_door": {
+      "operationName": "env_start_open_door",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "door",
+        "doors"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    },
+    "env_start_retracting_first": {
+      "operationName": "env_start_retracting_first",
+      "parameterNames": [
+        "gr"
+      ],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "doors",
+        "gear",
+        "gears",
+        "handle"
+      ],
+      "writtenVariables": [
+        "gear",
+        "gears"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {
+        "gr": "global('POSITION')"
+      }
+    }
+  },
+  "globalIdentifierTypes": {
+    "doors": "set(couple(global('POSITION'),global('DOOR_STATE')))",
+    "door": "global('DOOR_STATE')",
+    "handle": "global('HANDLE_STATE')",
+    "gears": "set(couple(global('POSITION'),global('GEAR_STATE')))",
+    "gear": "global('GEAR_STATE')"
+  },
+  "metadata": {
+    "fileType": "Trace",
+    "formatVersion": 5,
+    "savedAt": "2021-10-28T15:02:53.023914Z",
+    "creator": "traceReplay",
+    "proB2KernelVersion": "4.0.0-SNAPSHOT",
+    "proBCliVersion": "1.11.1-nightly",
+    "modelName": "R3GearsDoorsHandle"
+  }
+}

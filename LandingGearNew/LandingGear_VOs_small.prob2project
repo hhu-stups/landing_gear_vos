@@ -1,0 +1,171 @@
+{
+  "name": "LandingGear_VOs_small",
+  "description": "",
+  "machines": [
+    {
+      "name": "R0Gear",
+      "description": "",
+      "location": "R0Gear.bum",
+      "lastUsedPreferenceName": "default",
+      "validationObligations": [],
+      "ltlFormulas": [],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R0.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "options": [
+            "FIND_DEADLOCKS",
+            "FIND_INVARIANT_VIOLATIONS"
+          ],
+          "shouldExecute": true
+        }
+      ],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": []
+    },
+    {
+      "name": "R1GearDoor",
+      "description": "",
+      "location": "R1GearDoor.bum",
+      "lastUsedPreferenceName": "default",
+      "validationObligations": [
+        {
+          "id": "VO1",
+          "expression": "TR1",
+          "requirement": "Outgoing Sequence"
+        },
+        {
+          "id": "VO2",
+          "expression": "TR2",
+          "requirement": "Retraction Sequence"
+        },
+        {
+          "id": "VO3",
+          "expression": "TR1 & TR2",
+          "requirement": "Coverage Criterion"
+        },
+        {
+          "id": "VO4",
+          "expression": "LTL1",
+          "requirement": "R_31"
+        },
+        {
+          "id": "VO5",
+          "expression": "LTL2",
+          "requirement": "R_32"
+        }
+      ],
+      "ltlFormulas": [
+        {
+          "id": "LTL1",
+          "description": "Gears can only move when the doors are open",
+          "code": "G({gear = gear_moving} => ({gear = gear_moving} S {door = open}))",
+          "selected": true
+        },
+        {
+          "id": "LTL2",
+          "description": "Doors can only move when the gear is locked in place",
+          "code": "G({door = door_moving} => {gear = gear_moving})",
+          "selected": true
+        }
+      ],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": "TR1",
+          "location": "../Trace_Outgoing_Sequence_R1GearsDoors.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR2",
+          "location": "../Trace_Retraction_Sequence_R1GearsDoors.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R1GearDoor.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "id": "GMC1",
+          "options": [],
+          "goal": "door = closed & gear = retracted",
+          "shouldExecute": true
+        },
+        {
+          "id": "GMC2",
+          "options": [],
+          "goal": "door = closed & gear = extended",
+          "shouldExecute": true
+        },
+        {
+          "options": [
+            "FIND_DEADLOCKS",
+            "FIND_INVARIANT_VIOLATIONS"
+          ],
+          "shouldExecute": true
+        }
+      ],
+      "simulations": [],
+      "visBVisualisation": "../VisB/LandingGear R1.json",
+      "historyChartItems": []
+    }
+  ],
+  "requirements": [
+    {
+      "name": "Outgoing Sequence",
+      "introducedAt": "R1GearDoor",
+      "type": "FUNCTIONAL",
+      "text": "Outgoing Sequence: When the gears are retracted, and the doors are closed, then the following sequence of actions must be feasible:\n1. open doors \n2. retract gears \n3. close doors"
+    },
+    {
+      "name": "Retraction Sequence",
+      "introducedAt": "R1GearDoor",
+      "type": "FUNCTIONAL",
+      "text": "Retraction Sequence: When the gears are extended, and the doors are closed, then the following sequence of actions must be feasible:\n1. open doors \n2. extend gears \n3. close doors"
+    },
+    {
+      "name": "Coverage Criterion",
+      "introducedAt": "R1GearDoor",
+      "type": "NON_FUNCTIONAL",
+      "text": "Validation of outgoing and retraction sequence must cover all events in the model."
+    },
+    {
+      "name": "R_31",
+      "introducedAt": "R1GearDoor",
+      "type": "FUNCTIONAL",
+      "text": "Gears can only move when the doors are open."
+    },
+    {
+      "name": "R_32",
+      "introducedAt": "R1GearDoor",
+      "type": "FUNCTIONAL",
+      "text": "Doors can only move when the gear is locked in place."
+    }
+  ],
+  "preferences": [],
+  "metadata": {
+    "fileType": "Project",
+    "formatVersion": 29,
+    "savedAt": "2022-06-07T06:03:40.006094Z",
+    "creator": "User",
+    "proB2KernelVersion": "4.0.0-SNAPSHOT",
+    "proBCliVersion": null,
+    "modelName": null
+  }
+}

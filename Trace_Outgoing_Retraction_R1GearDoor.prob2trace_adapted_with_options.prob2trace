@@ -1,0 +1,377 @@
+{
+  "description": "",
+  "transitionList": [
+    {
+      "name": "$initialise_machine",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "closed",
+        "handle": "down",
+        "gear": "extended"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "toggle_handle_up",
+      "params": {},
+      "results": {},
+      "destState": {
+        "handle": "up"
+      },
+      "destStateNotChanged": [
+        "door",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "door_moving",
+        "gear": "extended"
+      },
+      "destStateNotChanged": [
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "open",
+        "handle": "up"
+      },
+      "destStateNotChanged": [
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_retracting",
+      "params": {},
+      "results": {},
+      "destState": {
+        "gear": "gear_moving"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_retract_gear",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "open",
+        "handle": "up",
+        "gear": "retracted"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "door_moving"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "closed",
+        "handle": "up",
+        "gear": "retracted"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "toggle_handle_down",
+      "params": {},
+      "results": {},
+      "destState": {
+        "handle": "down"
+      },
+      "destStateNotChanged": [
+        "door",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_open_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "door_moving",
+        "gear": "retracted"
+      },
+      "destStateNotChanged": [
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_open_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "open",
+        "handle": "down"
+      },
+      "destStateNotChanged": [
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_extending",
+      "params": {},
+      "results": {},
+      "destState": {
+        "gear": "gear_moving"
+      },
+      "destStateNotChanged": [
+        "door",
+        "handle"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_extend_gear",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "open",
+        "handle": "down",
+        "gear": "extended"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_close_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "door_moving"
+      },
+      "destStateNotChanged": [
+        "handle",
+        "gear"
+      ],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_close_door",
+      "params": {},
+      "results": {},
+      "destState": {
+        "door": "closed",
+        "handle": "down",
+        "gear": "extended"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    }
+  ],
+  "variableNames": [
+    "door",
+    "gear"
+  ],
+  "constantNames": [],
+  "setNames": [
+    "DOOR_STATE",
+    "GEAR_STATE"
+  ],
+  "machineOperationInfos": {
+    "env_retract_gear": {
+      "operationName": "env_retract_gear",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_close_door": {
+      "operationName": "env_close_door",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "door"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_start_close_door": {
+      "operationName": "env_start_close_door",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "door"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_start_extending": {
+      "operationName": "env_start_extending",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_open_door": {
+      "operationName": "env_open_door",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "door"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_start_open_door": {
+      "operationName": "env_start_open_door",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "door"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_start_retracting": {
+      "operationName": "env_start_retracting",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_extend_gear": {
+      "operationName": "env_extend_gear",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "door",
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    }
+  },
+  "globalIdentifierTypes": {
+    "door": "global('DOOR_STATE')",
+    "gear": "global('GEAR_STATE')"
+  },
+  "metadata": {
+    "fileType": "Trace",
+    "formatVersion": 5,
+    "savedAt": "2021-10-28T11:48:27.479522Z",
+    "creator": "traceReplay",
+    "proB2KernelVersion": "4.0.0-SNAPSHOT",
+    "proBCliVersion": "1.11.1-nightly",
+    "modelName": "R1GearDoor"
+  }
+}

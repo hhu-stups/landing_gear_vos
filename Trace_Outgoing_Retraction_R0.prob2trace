@@ -1,0 +1,146 @@
+{
+  "description": "",
+  "transitionList": [
+    {
+      "name": "$initialise_machine",
+      "params": {},
+      "results": {},
+      "destState": {
+        "gear": "extended"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_retracting",
+      "params": {},
+      "results": {},
+      "destState": {
+        "gear": "gear_moving"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_retract_gear",
+      "params": {},
+      "results": {},
+      "destState": {
+        "gear": "retracted"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_start_extending",
+      "params": {},
+      "results": {},
+      "destState": {
+        "gear": "gear_moving"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    },
+    {
+      "name": "env_extend_gear",
+      "params": {},
+      "results": {},
+      "destState": {
+        "gear": "extended"
+      },
+      "destStateNotChanged": [],
+      "preds": [],
+      "postconditions": [],
+      "description": ""
+    }
+  ],
+  "variableNames": [
+    "gear"
+  ],
+  "constantNames": [],
+  "setNames": [
+    "GEAR_STATE"
+  ],
+  "machineOperationInfos": {
+    "env_retract_gear": {
+      "operationName": "env_retract_gear",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_start_extending": {
+      "operationName": "env_start_extending",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_start_retracting": {
+      "operationName": "env_start_retracting",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    },
+    "env_extend_gear": {
+      "operationName": "env_extend_gear",
+      "parameterNames": [],
+      "outputParameterNames": [],
+      "topLevel": true,
+      "type": "EVENTB",
+      "readVariables": [
+        "gear"
+      ],
+      "writtenVariables": [
+        "gear"
+      ],
+      "nonDetWrittenVariables": [],
+      "typeMap": {}
+    }
+  },
+  "globalIdentifierTypes": {
+    "gear": "global('GEAR_STATE')"
+  },
+  "metadata": {
+    "fileType": "Trace",
+    "formatVersion": 5,
+    "savedAt": "2021-10-28T15:46:29.193858Z",
+    "creator": "traceReplay",
+    "proB2KernelVersion": "4.0.0-SNAPSHOT",
+    "proBCliVersion": "1.11.1-nightly",
+    "modelName": "R0Gear"
+  }
+}

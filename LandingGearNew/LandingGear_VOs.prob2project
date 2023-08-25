@@ -1,0 +1,1122 @@
+{
+  "name": "LandingGear_VOs",
+  "description": "",
+  "machines": [
+    {
+      "name": "R0Gear",
+      "description": "",
+      "location": "R0Gear.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R0.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "FIND_INVARIANT_VIOLATIONS",
+            "FIND_DEADLOCKS"
+          ],
+          "shouldExecute": true
+        }
+      ],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R1GearDoor",
+      "description": "",
+      "location": "R1GearDoor.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [
+        {
+          "id": "LTL2.1",
+          "description": "Gears can only move when the doors are open",
+          "code": "G({gear = gear_moving} => ({gear = gear_moving} S {door = open}))",
+          "expectedResult": true,
+          "selected": true
+        },
+        {
+          "id": null,
+          "description": "Gears can only retract when the doors are open",
+          "code": "G({gear = retracted} => ({gear = retracted} S {door = open}))",
+          "expectedResult": true,
+          "selected": true
+        },
+        {
+          "id": null,
+          "description": "Gears can only move when gear is extended",
+          "code": "{gear = extended} W ({gear /= extended} & G({gear = extended} => ({gear = extended} S {door = open})))",
+          "expectedResult": true,
+          "selected": true
+        }
+      ],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": "TR2.1",
+          "location": "../Trace_Outgoing_Sequence_R1GearsDoors.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R1GearDoor.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR2.2",
+          "location": "../Trace_Retraction_Sequence_R1GearsDoors.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "FIND_INVARIANT_VIOLATIONS",
+            "FIND_DEADLOCKS"
+          ],
+          "shouldExecute": true
+        },
+        {
+          "id": "MC2.1",
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "IGNORE_OTHER_ERRORS"
+          ],
+          "goal": "door = closed & gear = retracted",
+          "shouldExecute": true
+        },
+        {
+          "id": "MC2.2",
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "IGNORE_OTHER_ERRORS"
+          ],
+          "goal": "door = closed & gear = extended",
+          "shouldExecute": true
+        }
+      ],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R2GearDoorHandle",
+      "description": "",
+      "location": "R2GearDoorHandle.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [
+        {
+          "id": "R11_T",
+          "description": "R11bis",
+          "code": "G {handle=down} => ((F {door=closed & gear=extended}) U {handle/=down})",
+          "expectedResult": true,
+          "selected": true
+        },
+        {
+          "id": "R12_T",
+          "description": "R12bis",
+          "code": "G {handle=up} => ((F {door=closed & gear=retracted}) U {handle/=up})",
+          "expectedResult": true,
+          "selected": true
+        }
+      ],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R2.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R1GearDoor.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R1GearDoor.prob2trace_adapted_with_options.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R3GearsDoorsHandle",
+      "description": "",
+      "location": "R3GearsDoorsHandle.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [
+        {
+          "id": null,
+          "description": "Expected to succeed, validating abstract R31",
+          "code": "G ({gear_moving : ran(gears)} => ({gear_moving : ran(gears)} S {door=open}))",
+          "expectedResult": true,
+          "selected": true
+        },
+        {
+          "id": null,
+          "description": "Example generation for abstract R31",
+          "code": "not(G ({gear_moving : ran(gears)} => ({gear_moving : ran(gears)} S {door=open})))",
+          "expectedResult": true,
+          "selected": true
+        }
+      ],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_R31_NFM.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R2.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R3.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R4GearsDoorsHandleValves",
+      "description": "",
+      "location": "R4GearsDoorsHandleValves.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R4.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R3.prob2trace_adapted_with_options.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "IGNORE_OTHER_ERRORS"
+          ],
+          "shouldExecute": true
+        }
+      ],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R5GearsDoorsHandleValvesController",
+      "description": "",
+      "location": "R5GearsDoorsHandleValvesController.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [
+        {
+          "id": null,
+          "description": "",
+          "code": "G({handle = up} => ((({ran(gears) = {retracted} & ran(doors) = {closed}})\nR ({handle = up & shock_absorber = flight & anomaly = FALSE})) => F ({ran(gears) = {retracted} & ran(doors) = {closed}})))",
+          "expectedResult": true,
+          "selected": true
+        },
+        {
+          "id": null,
+          "description": "",
+          "code": "G({not (open_EV = TRUE & close_EV = TRUE)})",
+          "expectedResult": true,
+          "selected": true
+        },
+        {
+          "id": null,
+          "description": "",
+          "code": "G({not (retract_EV = TRUE & extend_EV = TRUE)})",
+          "expectedResult": true,
+          "selected": true
+        }
+      ],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_Outgoing_Retraction_R4.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "FIND_INVARIANT_VIOLATIONS",
+            "FIND_DEADLOCKS"
+          ],
+          "shouldExecute": true
+        },
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "IGNORE_OTHER_ERRORS",
+            "FIND_INVARIANT_VIOLATIONS"
+          ],
+          "shouldExecute": true
+        },
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "IGNORE_OTHER_ERRORS"
+          ],
+          "shouldExecute": true
+        },
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "IGNORE_OTHER_ERRORS"
+          ],
+          "goal": "gear = retracted & door = closed & general_EV = FALSE & handle = down",
+          "shouldExecute": true
+        },
+        {
+          "searchStrategy": "BREADTH_FIRST",
+          "options": [
+            "IGNORE_OTHER_ERRORS"
+          ],
+          "goal": "gear = retracted & door = closed & general_EV = FALSE & handle = down",
+          "shouldExecute": true
+        }
+      ],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R6GearsDoorsHandleValvesControllerSwitch",
+      "description": "",
+      "location": "R6GearsDoorsHandleValvesControllerSwitch.bum",
+      "lastUsedPreferenceName": "Operation Reuse",
+      "ltlFormulas": [
+        {
+          "id": "LTL1",
+          "description": "Expected to be true, validating R31",
+          "code": "G ({retract_EV = TRUE or extend_EV = TRUE} => ({retract_EV = TRUE or extend_EV = TRUE} S {ran(doors) = {open}}))",
+          "expectedResult": true,
+          "selected": true
+        },
+        {
+          "id": null,
+          "description": "Expected to fail, example generation for R31",
+          "code": "not(G ({retract_EV = TRUE or extend_EV = TRUE} => ({retract_EV = TRUE or extend_EV = TRUE} S {ran(doors) = {open}})))",
+          "expectedResult": true,
+          "selected": true
+        }
+      ],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [
+        {
+          "id": null,
+          "type": "FIND_REDUNDANT_INVARIANTS",
+          "code": "",
+          "selected": true
+        },
+        {
+          "id": null,
+          "type": "CHECK_REFINEMENT",
+          "code": "",
+          "selected": true
+        }
+      ],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": "TR3",
+          "location": "../Outgoing_Sequence_3.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR11",
+          "location": "../Retraction_Sequence_3.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR16",
+          "location": "../Retraction_Sequence_8.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR18",
+          "location": "../Retraction_Sequence_10.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR20",
+          "location": "../Retraction_Sequence_12.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR1",
+          "location": "../Outgoing_Sequence_1.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR6",
+          "location": "../Outgoing_Sequence_6.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR13",
+          "location": "../Retraction_Sequence_5.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR21",
+          "location": "../Retraction_Sequence_13.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR15",
+          "location": "../Retraction_Sequence_7.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR8",
+          "location": "../Outgoing_Sequence_8.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR9",
+          "location": "../Retraction_Sequence_1.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR17",
+          "location": "../Retraction_Sequence_9.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR4",
+          "location": "../Outgoing_Sequence_4.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR19",
+          "location": "../Retraction_Sequence_11.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR2",
+          "location": "../Outgoing_Sequence_2.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Retraction_Sequence_Start.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR14",
+          "location": "../Retraction_Sequence_6.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Outgoing_Sequence_Start.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR5",
+          "location": "../Outgoing_Sequence_5.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR12",
+          "location": "../Retraction_Sequence_4.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR7",
+          "location": "../Outgoing_Sequence_7.prob2trace",
+          "selected": true
+        },
+        {
+          "id": "TR10",
+          "location": "../Retraction_Sequence_2.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "id": "MC3",
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [],
+          "shouldExecute": true
+        },
+        {
+          "searchStrategy": "BREADTH_FIRST",
+          "options": [
+            "FIND_INVARIANT_VIOLATIONS",
+            "FIND_DEADLOCKS"
+          ],
+          "goal": "door = closed & gear = retracted & handle = down",
+          "shouldExecute": true
+        },
+        {
+          "id": "MC1",
+          "searchStrategy": "BREADTH_FIRST",
+          "options": [],
+          "goal": "gear = retracted & door = closed & general_EV = FALSE & handle = down",
+          "shouldExecute": true
+        },
+        {
+          "id": "MC2",
+          "searchStrategy": "BREADTH_FIRST",
+          "options": [],
+          "goal": "gear = extended & door = closed & general_EV = FALSE & handle = up",
+          "shouldExecute": true
+        },
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "FIND_INVARIANT_VIOLATIONS",
+            "FIND_DEADLOCKS"
+          ],
+          "shouldExecute": true
+        }
+      ],
+      "proofObligationItems": [
+        {
+          "id": null,
+          "name": "con_stimulate_open_door_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stimulate_retract_gear_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stop_stimulate_close_door_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "INITIALISATION/r51/INV",
+          "description": "Invariant  establishment",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stimulate_close_door_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stop_stimulate_extend_gear_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stop_stimulate_general_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stimulate_extend_gear_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stimulate_general_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stop_stimulate_open_door_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        },
+        {
+          "id": null,
+          "name": "con_stop_stimulate_retract_gear_valve/r51/INV",
+          "description": "Invariant  preservation",
+          "selected": true
+        }
+      ],
+      "simulations": [
+        {
+          "path": "../Simulation_R6GearsDoorsHandleValvesControllerSwitch_Fast.json",
+          "simulationItems": [
+            {
+              "id": null,
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "door = closed & gear = retracted",
+                "SIGNIFICANCE": 0.01,
+                "PROBABILITY": 0.95,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "shock_absorber = flight",
+                "EXECUTIONS": 10000,
+                "TIME": 20000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": "HT1.1",
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "handle = down => (ran(gears) = {extended} & ran(doors) = {closed})",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 10000,
+                "TIME": 15000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": "HT1.2",
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {extended} & ran(doors) = {closed}",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 10000,
+                "PREDICATE": "handle = down",
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "PREDICATE_INVARIANT"
+              }
+            },
+            {
+              "id": null,
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {retracted} & ran(doors) = {closed}",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = up",
+                "EXECUTIONS": 1000,
+                "TIME": 15000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": null,
+              "type": "ESTIMATION",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {extended} & ran(doors) = {closed}",
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 1000,
+                "TIME": 15000,
+                "ESTIMATION_TYPE": "MINIMUM",
+                "DESIRED_VALUE": 0.999999,
+                "CHECKING_TYPE": "TIMING",
+                "EPSILON": 1.0E-6
+              }
+            }
+          ]
+        },
+        {
+          "path": "../Simulation_R6GearsDoorsHandleValvesControllerSwitch_Normal.json",
+          "simulationItems": [
+            {
+              "id": null,
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "door = closed & gear = retracted",
+                "SIGNIFICANCE": 0.01,
+                "PROBABILITY": 0.95,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "shock_absorber = flight",
+                "EXECUTIONS": 10000,
+                "TIME": 20000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": "HT1.3",
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "handle = down => (ran(gears) = {extended} & ran(doors) = {closed})",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 10000,
+                "TIME": 15000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": "HT1.4",
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {extended} & ran(doors) = {closed}",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 10000,
+                "PREDICATE": "handle = down",
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "PREDICATE_INVARIANT"
+              }
+            },
+            {
+              "id": null,
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {retracted} & ran(doors) = {closed}",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = up",
+                "EXECUTIONS": 1000,
+                "TIME": 15000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": null,
+              "type": "ESTIMATION",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {extended} & ran(doors) = {closed}",
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 1000,
+                "TIME": 15000,
+                "ESTIMATION_TYPE": "MINIMUM",
+                "DESIRED_VALUE": 0.999999,
+                "CHECKING_TYPE": "TIMING",
+                "EPSILON": 1.0E-6
+              }
+            }
+          ]
+        },
+        {
+          "path": "../Simulation_R6GearsDoorsHandleValvesControllerSwitch_Slow.json",
+          "simulationItems": [
+            {
+              "id": null,
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "door = closed & gear = retracted",
+                "SIGNIFICANCE": 0.01,
+                "PROBABILITY": 0.95,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "shock_absorber = flight",
+                "EXECUTIONS": 10000,
+                "TIME": 20000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": "HT1.5",
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "handle = down => (ran(gears) = {extended} & ran(doors) = {closed})",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 10000,
+                "TIME": 15000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": "HT1.6",
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {extended} & ran(doors) = {closed}",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 10000,
+                "PREDICATE": "handle = down",
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "PREDICATE_INVARIANT"
+              }
+            },
+            {
+              "id": null,
+              "type": "HYPOTHESIS_TEST",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {retracted} & ran(doors) = {closed}",
+                "SIGNIFICANCE": 1.0E-6,
+                "PROBABILITY": 0.999999,
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = up",
+                "EXECUTIONS": 1000,
+                "TIME": 15000,
+                "HYPOTHESIS_CHECKING_TYPE": "LEFT_TAILED",
+                "CHECKING_TYPE": "TIMING"
+              }
+            },
+            {
+              "id": null,
+              "type": "ESTIMATION",
+              "information": {
+                "ENDING_PREDICATE": "ran(gears) = {extended} & ran(doors) = {closed}",
+                "MAX_STEPS_BEFORE_PROPERTY": 1000,
+                "STARTING_PREDICATE_ACTIVATED": "handle = down",
+                "EXECUTIONS": 1000,
+                "TIME": 15000,
+                "ESTIMATION_TYPE": "MINIMUM",
+                "DESIRED_VALUE": 0.999999,
+                "CHECKING_TYPE": "TIMING",
+                "EPSILON": 1.0E-6
+              }
+            }
+          ]
+        },
+        {
+          "path": "../Simulation_R6GearsDoorsHandleValvesControllerSwitch_Fast_Interactive.json",
+          "simulationItems": []
+        }
+      ],
+      "visBVisualisation": "../VisB/LandingGear_2.json",
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R7GearsDoorsHandleValvesControllerSwitchLights",
+      "description": "",
+      "location": "R7GearsDoorsHandleValvesControllerSwitchLights.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_R6_for_NFM.prob2trace_adapted_with_options.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_R6_ABZ_Paper.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_R7_for_NFM.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "FIND_INVARIANT_VIOLATIONS",
+            "FIND_DEADLOCKS"
+          ],
+          "shouldExecute": true
+        },
+        {
+          "searchStrategy": "MIXED_BF_DF",
+          "options": [
+            "IGNORE_OTHER_ERRORS"
+          ],
+          "shouldExecute": true
+        }
+      ],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R8GearsDoorsHandleValvesControllerSwitchLightsSensors",
+      "description": "",
+      "location": "R8GearsDoorsHandleValvesControllerSwitchLightsSensors.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [],
+      "modelcheckingItems": [],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    },
+    {
+      "name": "R9GearsDoorsHandleValvesControllerSwitchLightsSensorsTime",
+      "description": "",
+      "location": "R9GearsDoorsHandleValvesControllerSwitchLightsSensorsTime.bum",
+      "lastUsedPreferenceName": "default",
+      "ltlFormulas": [],
+      "ltlPatterns": [],
+      "symbolicCheckingFormulas": [],
+      "symbolicAnimationFormulas": [],
+      "testCases": [],
+      "traces": [
+        {
+          "id": null,
+          "location": "../Trace_R9_for_NFM.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_R8_for_NFM.prob2trace_adapted_with_options.prob2trace",
+          "selected": true
+        },
+        {
+          "id": null,
+          "location": "../Trace_Failed_Start_Landing.prob2trace",
+          "selected": true
+        }
+      ],
+      "modelcheckingItems": [],
+      "proofObligationItems": [],
+      "simulations": [],
+      "visBVisualisation": null,
+      "historyChartItems": [],
+      "dotVisualizationItems": {},
+      "tableVisualizationItems": {}
+    }
+  ],
+  "requirements": [
+    {
+      "name": "Outgoing Sequence (R1)",
+      "introducedAt": "R1GearDoor",
+      "type": "FUNCTIONAL",
+      "text": "Outgoing Sequence: When the gears are retracted, and the doors are closed, then the following sequence of actions must be feasible:\n1. open doors \n2. retract gears \n3. close doors",
+      "validationObligations": [
+        {
+          "machine": "R1GearDoor",
+          "expression": "MC2.1; TR2.1"
+        }
+      ]
+    },
+    {
+      "name": "Retraction Sequence (R1)",
+      "introducedAt": "R1GearDoor",
+      "type": "FUNCTIONAL",
+      "text": "Retraction Sequence: When the gears are extended, and the doors are closed, then the following sequence of actions must be feasible:\n1. open doors \n2. extend gears \n3. close doors",
+      "validationObligations": [
+        {
+          "machine": "R1GearDoor",
+          "expression": "MC2.2; TR2.2"
+        }
+      ]
+    },
+    {
+      "name": "R_31 (R1)",
+      "introducedAt": "R1GearDoor",
+      "type": "FUNCTIONAL",
+      "text": "Gears can only move when the doors are open.",
+      "validationObligations": [
+        {
+          "machine": "R1GearDoor",
+          "expression": "LTL2.1"
+        }
+      ]
+    },
+    {
+      "name": "R_31",
+      "introducedAt": "R6GearsDoorsHandleValvesControllerSwitch",
+      "type": "FUNCTIONAL",
+      "text": "When the command line is working (normal mode), \nthe stimulation of the gears outgoing or the retraction electro-valves \ncan only happen when the three doors are locked open.",
+      "validationObligations": [
+        {
+          "machine": "R6GearsDoorsHandleValvesControllerSwitch",
+          "expression": "LTL1"
+        }
+      ]
+    },
+    {
+      "name": "Outgoing Sequence",
+      "introducedAt": "R6GearsDoorsHandleValvesControllerSwitch",
+      "type": "FUNCTIONAL",
+      "text": "Outgoing Sequence: The outgoing of gears is decomposed in a sequence of elementary \nactions. When the gears are locked in retracted position, the general valve is not stimulated, \nand the doors are locked in closed position, if the pilot sets the handle to “Down”, \nthen the software should have the following sequence of actions:\n\n1. stimulate the general electro-valve isolating the command unit in order to send\nhydraulic pressure to the maneuvering electro-valves,\n2. stimulate the door opening electro-valve,\n3. once the three doors are in the open position, stimulate the gear outgoing electro-valve,\n4. once the three gears are locked down, stop the stimulation of the gear outgoing \nelectro-valve,\n5. stop the stimulation of the door opening electro-valve,\n6. stimulate the door closure electro- valve,\n7. once the three doors are locked in the closed position, stop the stimulation of the \ndoor closure electro-valve,\n8. and finally stop stimulating the general electro-valve.",
+      "validationObligations": [
+        {
+          "machine": "R6GearsDoorsHandleValvesControllerSwitch",
+          "expression": "MC1 ; (TR1 & TR2 & TR3 & TR4 & TR5 & TR6 & TR7 & TR8)"
+        }
+      ]
+    },
+    {
+      "name": "R_11",
+      "introducedAt": "R2GearDoorHandle",
+      "type": "FUNCTIONAL",
+      "text": "When the command line is working (normal mode), if the landing gear command handle has been pushed DOWN and stays DOWN, then eventually the gears will be locked down and the doors will be seen closed;",
+      "validationObligations": [
+        {
+          "machine": "R2GearDoorHandle",
+          "expression": "R11_T"
+        }
+      ]
+    },
+    {
+      "name": "R_12",
+      "introducedAt": "R2GearDoorHandle",
+      "type": "FUNCTIONAL",
+      "text": "When the command line is working (normal mode), if the landing gear command handle has been pushed UP and stays UP, then eventually the gears will be locked retracted and the doors will be seen closed.",
+      "validationObligations": [
+        {
+          "machine": "R2GearDoorHandle",
+          "expression": "R12_T"
+        }
+      ]
+    },
+    {
+      "name": "Coverage Criterion",
+      "introducedAt": "R1GearDoor",
+      "type": "NON_FUNCTIONAL",
+      "text": "Validation of outgoing and retraction sequence must cover all events in the model.",
+      "validationObligations": [
+        {
+          "machine": "R1GearDoor",
+          "expression": "(MC2.1 ; TR2.1) & (MC2.2 ; TR2.2)"
+        },
+        {
+          "machine": "R6GearsDoorsHandleValvesControllerSwitch",
+          "expression": "(MC1 ; (TR1 & TR2 & TR3 & TR4 & TR5 & TR6 & TR7 & TR8)) & (MC2 ; (TR9 & TR10 & TR11 & TR12 & TR13 & TR14 & TR15 & TR16 & TR17 & TR18 & TR19 & TR20 & TR21))"
+        }
+      ]
+    },
+    {
+      "name": "Gears and Doors Behavior",
+      "introducedAt": "R6GearsDoorsHandleValvesControllerSwitch",
+      "type": "FUNCTIONAL",
+      "text": "The physical component consisting of gears and doors must behave as described in Figure 3 which corresponds to Figure 2.",
+      "validationObligations": [
+        {
+          "machine": "R6GearsDoorsHandleValvesControllerSwitch",
+          "expression": "MC3"
+        }
+      ]
+    },
+    {
+      "name": "R_11 (strong)",
+      "introducedAt": "R6GearsDoorsHandleValvesControllerSwitch",
+      "type": "FUNCTIONAL",
+      "text": "When the command line is working (normal mode), if the landing gear command handle has been pushed DOWN and stays DOWN, then the gears will be locked down and the doors will be seen closed less than 15 seconds after the handle has been pushed",
+      "validationObligations": [
+        {
+          "machine": "R6GearsDoorsHandleValvesControllerSwitch",
+          "expression": "HT1.1 & HT1.2 & HT1.3 & HT1.4 & HT1.5 & HT1.6"
+        }
+      ]
+    },
+    {
+      "name": "Retraction Sequence",
+      "introducedAt": "R6GearsDoorsHandleValvesControllerSwitch",
+      "type": "FUNCTIONAL",
+      "text": "Retraction sequence. In the same way, the retraction of gears is decomposed in a sequence of elementary actions. When the gears are locked in down position, and the doors are locked in closed position, if the pilot sets the handle to “Up”, then the software should have the following sequence of actions:\n\n1. stimulate the general electro-valve isolating the command unit, in order to send hydraulic pressure to the maneuvering electro-valves,\n2. stimulate the door opening electro-valve,\n3. once the three doors are in the open position, if the three shock absorbers\nare relaxed, then stimulate the gear retraction electro-valve and go to step\n4, else (if one of the three shock absorbers is not relaxed) go to step 5,\n4. once the three gears are locked up, stop the stimulation of the gear retraction\nelectro-valve,\n5. stop the stimulation of the door opening electro-valve,\n6. stimulate the door closure electro-valve,\n7. once the three doors are locked in the closed position, stop the stimulation\nof the door closure electro-valve,\n8. and finally stop stimulating the general electro-valve.\n",
+      "validationObligations": [
+        {
+          "machine": "R6GearsDoorsHandleValvesControllerSwitch",
+          "expression": "MC2 ; (TR9 & TR10 & TR11 & TR12 & TR13 & TR14 & TR15 & TR16 & TR17 & TR18 & TR19 & TR20 & TR21)"
+        }
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "Operation Reuse",
+      "preferences": {
+        "OPERATION_REUSE": "true"
+      }
+    }
+  ],
+  "metadata": {
+    "fileType": "Project",
+    "formatVersion": 34,
+    "savedAt": "2022-12-01T12:13:43.212513Z",
+    "creator": "User",
+    "proB2KernelVersion": "4.0.0-SNAPSHOT",
+    "proBCliVersion": null,
+    "modelName": null
+  }
+}
